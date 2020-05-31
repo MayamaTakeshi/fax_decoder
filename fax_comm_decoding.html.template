@@ -77,7 +77,7 @@ span.tab{
 
 <body>
 
-<div align='center'><b>Fax messages from __WAV_FILE_NAME__</b></div>
+<div align='center'><b>Fax messages extracted from __WAV_FILE_NAME__</b></div>
 
 <div class='msg_list' id="app">
 	<item

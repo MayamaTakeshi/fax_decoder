@@ -48,7 +48,9 @@ s = ''.join(fin.readlines())
 lines = open('fax_comm_decoding.html.template').readlines()
 template = ''.join(lines)
 
-html = template.replace("__WAV_FILE_NAME__", wav_file).replace("__ITEMS__", s)
+wf = wav_file.split("/")[-1]
+
+html = template.replace("__WAV_FILE_NAME__", wf).replace("__ITEMS__", s)
 
 fout = open(html_file, "w")
 fout.write(html)

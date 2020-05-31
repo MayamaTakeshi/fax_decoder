@@ -22,9 +22,9 @@ file=$1
 sox $file side1.wav remix 1
 sox $file side2.wav remix 2
 
-fax_decoder side1.wav 0 > temp.txt
-fax_decoder side2.wav 1 >> temp.txt
+fax_decoder side1.wav 0 > temp.txt 2>&1
+fax_decoder side2.wav 1 >> temp.txt 2>&1
 
 cat temp.txt | grep -E "MESSAGE|STATS" | sort > flow.txt 
 
-echo success
+echo "flow.txt file successfully created"
