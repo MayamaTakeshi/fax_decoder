@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Fax Communication Decoding</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script type='text/javascript'>
+document.addEventListener("DOMContentLoaded", function(){
+
+	Vue.component('item', {
+		props: ['data'],
+		template: '<div><p class="item_head" :style="{ backgroundColor: data.bColor }" v-on:click="data.expanded = !data.expanded"><span :style="{padding: (data.col * 20) + \'px\'}"></span>{{data.time}} {{data.head}}</p><transition name="expand"><div v-if="data.expanded" class="item_body"><pre>{{data.body}}</pre></div></transition></div>',
+	})
+
+	var app = new Vue({
+		el: '#app',
+		data: {
+			items: __ITEMS__
+		},
+	})
+});
+</script>
+
+<style type='text/css'>
+
+body {
+    margin: 10px auto;
+    font: 75%/120% Verdana,Arial, Helvetica, sans-serif;
+}
+
+p {
+    padding: 0 0 1em;
+}
+
+.msg_list {
+    width: auto;
+    margin: 0px;
+    padding: 0px;
+	font-size: 12px;
+}
+
+.item_head {
+    width: auto;
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+    margin:1px;
+}
+
+.item_body {
+    transition: all .5s linear;
+    width: auto;
+    padding: 5px 10px 15px;
+    background-color:#F4F4F8;
+}
+
+span.tab{
+    padding: 0 10px; /* Or desired space*/
+}
+
+
+/* always present */
+.expand-transition {
+  transition: all .5s ease;
+  overflow: hidden;
+}
+
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+.expand-enter, .expand-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div align='center'><b>Fax messages from __WAV_FILE_NAME__</b></div>
+
+<div class='msg_list' id="app">
+	<item
+		v-for="item in items"
+		v-bind:data="item"
+	></item>
+</div>
+<div><span class="tab"</span></div>
+</body>
+</html>
