@@ -29,7 +29,7 @@ cmd = "./gen_flow.sh " + wav_file + " temp/flow.txt"
 res = os.system(cmd)
 
 if res != 0:
-	sys.stderr("Command '" + cmd + "' failed with " + str(res))
+	sys.stderr.write("Command '" + cmd + "' failed with " + str(res))
 	sys.exit(1)
 
 cmd = "./flow2json.py temp/flow.txt > temp/temp.json"
@@ -37,7 +37,7 @@ cmd = "./flow2json.py temp/flow.txt > temp/temp.json"
 res = os.system(cmd)
 
 if res != 0:
-	sys.stderr("Command '" + cmd + "' failed with " + str(res))
+	sys.stderr.write("Command '" + cmd + "' failed with " + str(res))
 	sys.exit(1)
 
 

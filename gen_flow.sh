@@ -25,9 +25,11 @@ mkdir -p temp
 sox $wav_file temp/side1.wav remix 1
 sox $wav_file temp/side2.wav remix 2
 
-fax_decoder temp/side1.wav 0 > temp/temp.txt 2>&1
-fax_decoder temp/side2.wav 1 >> temp/temp.txt 2>&1
+# do not redirect stderr to stdout using 2>&1 because logs from spandsp might mess with our logs.
+fax_decoder temp/side1.wav 0 > temp/temp.txt
+fax_decoder temp/side2.wav 1 >> temp/temp.txt
 
 cat temp/temp.txt | grep -E "MESSAGE|STATS" | sort > $out_file
 
 echo "$out_file successfully generated"
+
