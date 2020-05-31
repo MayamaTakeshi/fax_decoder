@@ -17,14 +17,17 @@ then
 	exit 1;
 fi
 
-file=$1
+wav_file=$1
+out_file=$2
 
-sox $file side1.wav remix 1
-sox $file side2.wav remix 2
+mkdir -p temp
 
-fax_decoder side1.wav 0 > temp.txt 2>&1
-fax_decoder side2.wav 1 >> temp.txt 2>&1
+sox $wav_file temp/side1.wav remix 1
+sox $wav_file temp/side2.wav remix 2
 
-cat temp.txt | grep -E "MESSAGE|STATS" | sort > flow.txt 
+fax_decoder temp/side1.wav 0 > temp/temp.txt 2>&1
+fax_decoder temp/side2.wav 1 >> temp/temp.txt 2>&1
 
-echo "flow.txt file successfully created"
+cat temp/temp.txt | grep -E "MESSAGE|STATS" | sort > $out_file
+
+echo "$out_file successfully generated"

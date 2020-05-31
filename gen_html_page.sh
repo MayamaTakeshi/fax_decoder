@@ -23,25 +23,25 @@ if len(sys.argv) != 3:
 app, wav_file, html_file = sys.argv
 
 
-cmd = "./gen_flow.sh " + wav_file + " flow.txt"
+cmd = "./gen_flow.sh " + wav_file + " temp/flow.txt"
 
 
 res = os.system(cmd)
 
 if res != 0:
-	sys.stderr("Command '" + cmd + "' failed with " + res)
+	sys.stderr("Command '" + cmd + "' failed with " + str(res))
 	sys.exit(1)
 
-cmd = "./flow2json.py flow.txt > temp.json"
+cmd = "./flow2json.py temp/flow.txt > temp/temp.json"
 
 res = os.system(cmd)
 
 if res != 0:
-	sys.stderr("Command '" + cmd + "' failed with " + res)
+	sys.stderr("Command '" + cmd + "' failed with " + str(res))
 	sys.exit(1)
 
 
-fin = open("./temp.json")
+fin = open("temp/temp.json")
 
 s = ''.join(fin.readlines())
 
