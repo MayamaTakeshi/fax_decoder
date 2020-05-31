@@ -151,5 +151,13 @@ t30 = {
     "meaning": "Transmitting subscriber identification",
     "details": "signal indicating that the following FIF information is the identification of the transmitting station."
   },
+  "CTC": {
+    "meaning": "Continue to correct",
+    "details": "Only used with ECM. A response message sent after the fourth PPR message indicating that the transmitter will continue to correct the previous message."
+  },
+  "CTR": {
+    "meaning": "Response for continue to correct",
+    "details": "An ECM message that is the response to a CTC that indicates that the receiving device accepts the contents included in the CTC message."
+  },
 }
 
