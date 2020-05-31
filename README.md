@@ -10,8 +10,6 @@ sudo apt install libaudiofile-dev
 
 git clone https://github.com/MayamaTakeshi/spandsp
 cd spandsp
-sudo apt install libtiff-dev
-sudo apt install libaudiofile-dev
 ./autogen.sh
 ./configure
 touch README
