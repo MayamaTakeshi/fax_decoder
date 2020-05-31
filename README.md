@@ -26,7 +26,7 @@ sudo apt install sox
 
 Finally, you can use the app by doing:
 ```
-./gen_html_page.sh PATH_TO_WAV_FILE PATH_TO_HTML_FILE
+./gen_html_page.py PATH_TO_WAV_FILE PATH_TO_HTML_FILE
 
 ```
 Example:
