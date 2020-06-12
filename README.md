@@ -2,7 +2,7 @@
 Simple tool to help to troubleshoot fax problems.
 You provide a STEREO wav file with the recording of a fax call (with each side of the call in a different channel) and this tool will generate a web page where the T.30 messages present in the wav file can be inspected.
 
-To install it, you will need to build fax_decoder:
+To use it, you will need to build and install spandsp fax_decoder:
 ```
 sudo apt install build-essential make automake autoconf
 sudo apt install libtiff-dev
@@ -31,7 +31,8 @@ Finally, you can use the app by doing:
 ```
 Example:
 ```
-./gen_html_page.sh b9c76087-3887-45ef-97fd-14cc556128ed.wav fax_comm_decoding.html
+./gen_html_page.sh dc00fcdb-6cc0-4034-a551-1afaf6662a80.wav fax_decoder_sample.html
 ```
-Then just open fax_comm_decoding.html in your browser.
+
+Then just open fax_comm_decoding.html in your browser: ![IMAGE](fax_decoder_sample_html.png)
 
