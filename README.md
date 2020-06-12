@@ -34,5 +34,5 @@ Example:
 ./gen_html_page.sh dc00fcdb-6cc0-4034-a551-1afaf6662a80.wav fax_decoder_sample.html
 ```
 
-Then just open fax_comm_decoding.html in your browser: ![IMAGE](fax_decoder_sample_html.png)
+Then just open fax_decoder_sample.html in your browser: ![IMAGE](fax_decoder_sample_html.png)
 
