@@ -159,5 +159,9 @@ t30 = {
     "meaning": "Response for continue to correct",
     "details": "An ECM message that is the response to a CTC that indicates that the receiving device accepts the contents included in the CTC message."
   },
+  "FCD": {
+    "meaning": "Facsimile Coded Data",
+    "details": "",
+  },
 }
 
