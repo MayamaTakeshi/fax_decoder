@@ -44,13 +44,21 @@ if res != 0:
 fin = open("temp/temp.json")
 
 s = ''.join(fin.readlines())
+data = json.loads(s)
+
+for item in data:
+    item['expanded'] = False
+    if item['col'] == "0":
+        item['bColor'] = '#4cd3c2'
+    else:
+        item['bColor'] = '#d1eaa3'
 
 lines = open('fax_comm_decoding.html.template').readlines()
 template = ''.join(lines)
 
 wf = wav_file.split("/")[-1]
 
-html = template.replace("__WAV_FILE_NAME__", wf).replace("__ITEMS__", s)
+html = template.replace("__WAV_FILE_NAME__", wf).replace("__ITEMS__", json.dumps(data))
 
 fout = open(html_file, "w")
 fout.write(html)

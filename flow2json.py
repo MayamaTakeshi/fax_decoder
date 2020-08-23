@@ -6,13 +6,15 @@ from t30 import t30
 
 
 def usage(err):
+    app = sys.argv[0]
+
     out = sys.stderr
     if(err):
         out = sys.stderr
     out.write("""
-Usage: flow_file
-Ex:    flow.txt
-""")
+Usage: %s flow_file
+Ex:    %s flow.txt
+""" % (app, app))
 
 
 def convert(filename):
@@ -28,9 +30,8 @@ def convert(filename):
         item = {
             'time': time,
             'col': col,
-            'head': item_type + " " + subject,
-            'bColor': '#4cd3c2' if col == '0' else '#d1eaa3',
-            'expanded': False,
+            'type': item_type,
+            'subject': subject,
             'body': 'NO DETAILS',
         }
 

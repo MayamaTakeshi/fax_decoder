@@ -2,7 +2,7 @@
 
 set -o errexit
 set -o nounset
-set -o pipefail
+#set -o pipefail # if grep in the pipe fails, it should be ignored (it will happen if the wav file doesn't have fax communication)
 
 function usage() {
 	cat <<EOF
@@ -29,7 +29,7 @@ sox $wav_file temp/side2.wav remix 2
 fax_decoder temp/side1.wav 0 > temp/temp.txt
 fax_decoder temp/side2.wav 1 >> temp/temp.txt
 
-cat temp/temp.txt | grep -E "MESSAGE|STATS" | sort > $out_file
+cat temp/temp.txt | grep -E "TONE|MESSAGE|STATS" | sort > $out_file
 
 echo "$out_file successfully generated"
 

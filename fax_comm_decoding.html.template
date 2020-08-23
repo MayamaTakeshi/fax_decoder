@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 	Vue.component('item', {
 		props: ['data'],
-		template: '<div><p class="item_head" :style="{ backgroundColor: data.bColor }" v-on:click="data.expanded = !data.expanded"><span :style="{padding: (data.col * 20) + \'px\'}"></span>{{data.time}} {{data.head}}</p><transition name="expand"><div v-if="data.expanded" class="item_body"><pre>{{data.body}}</pre></div></transition></div>',
+		template: '<div><p class="item_head" :style="{ backgroundColor: data.bColor }" v-on:click="data.expanded = !data.expanded"><span :style="{padding: (data.col * 20) + \'px\'}"></span>{{data.time}} {{data.type + " " + data.subject}}</p><transition name="expand"><div v-if="data.expanded" class="item_body"><pre>{{data.body}}</pre></div></transition></div>',
 	})
 
 	var app = new Vue({
