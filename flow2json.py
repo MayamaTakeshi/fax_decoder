@@ -40,7 +40,7 @@ def convert(filename):
             details = tokens[5]
             info = t30[subject] if t30.has_key(subject) else {'meaning': '', 'details': ''}
 
-            item['head'] = item['head'] + " (" + info['meaning'] + ")"
+            item['subject'] = item['subject'] + " (" + info['meaning'] + ")"
             item['body'] = "MESSAGE " + subject + " (" + info['meaning'] + "): " + info['details'] + "\n\nParse:\n" + details.replace("%0a", "\n") + "\n\nRaw Bytes:" + raw_bytes
         data.append(item)
 
