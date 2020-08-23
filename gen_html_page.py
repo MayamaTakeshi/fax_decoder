@@ -3,6 +3,7 @@
 import os
 import sys
 import json
+from t30 import t30
 
 def usage(err):
 	out = sys.stdout
@@ -58,10 +59,18 @@ for item in data:
         info = t30[msg] if t30.has_key(msg) else {'meaning': '', 'details': ''}
 
         item['event'] = item['event'] + " (" + info['meaning'] + ")"
-        item['body'] = "MESSAGE " + event + " (" + info['meaning'] + "): " + info['details'] + "\n\nParse:\n" + details.replace("%0a", "\n") + "\n\nRaw Bytes:" + item['bytes']
-        delete item['bytes']
-        delete item['details']
+        item['body'] = "MESSAGE " + msg + " (" + info['meaning'] + "): " + info['details'] + "\n\nParse:\n" + info['details'].replace("%0a", "\n") + "\n\nRaw Bytes:" + item['bytes']
+        del item['bytes']
+        del item['details']
+    elif item['type'] == 'TONE':
+        msg = item['event']
+        info = t30[msg] if t30.has_key(msg) else {'meaning': '', 'details': ''}
 
+        item['event'] = item['event'] + " (" + info['meaning'] + ")"
+        item['body'] = "TONE " + msg + " (" + info['meaning'] + "): " "\n" + info['details'].replace("%0a", "\n")
+        del item['bytes']
+        del item['details']
+ 
 
 lines = open('fax_comm_decoding.html.template').readlines()
 template = ''.join(lines)

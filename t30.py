@@ -1,7 +1,27 @@
 t30 = {
-  "CED": {
-    "meaning": "Called station identification",
-    "details": "to indicate a called non-speech terminal. At 1.8 to 2.5 seconds after the called station is connected to the line, it send a continuous 2100 Hz tone for a duration of not less than 2.6 seconds and not more than 4.0 seconds."
+  "ANS": {
+    "meaning": "Answer Tone",
+    "details": "(also called CED: Called station identification) to indicate a called non-speech terminal.\nAt 1.8 to 2.5 seconds after the called station is connected to the line,\nit send a continuous 2100 Hz tone for a duration of not less\nthan 2.6 seconds and not more than 4.0 seconds."
+  },
+  "ANS_PR": {
+    "meaning": "Answer Tone Phase Reversals",
+    "details": "ANS with phase reversals tone is a 2100Hz+-15Hz tone for 3.3s+-0.7s, with a 180 degree\nphase jump every 450ms+-25ms."
+  },
+  "ANSAM": {
+    "meaning": "ANSam Tone",
+    "details": "The ANSam tone is a version of ANS with 20% of 15Hz+-0.1Hz AM modulation, as per V.8."
+  },
+  "ANSAM_PR": {
+    "meaning": "ANSam Tone Phase Reversals",
+    "details": "The ANSam with phase reversals tone is a version of ANS_PR with 20% of 15Hz+-0.1Hz\nAM modulation, as per V.8."
+  },
+  "FAX_PREAMBLE": {
+    "meaning": "",
+    "details": "FAX preamble in a string of V.21 HDLC flag octets. This is only valid as a result of\ntone detection. It should not be specified as a tone type to transmit or receive."
+  },
+  "FAX_CED_OR_PREAMBLE": {
+    "meaning": "",
+    "details": "CED tone is the same as ANS tone. FAX preamble in a string of V.21 HDLC flag octets.\nThis is only valid as a tone type to receive. It is never reported as a detected tone type. The report will either be for FAX preamble or CED/ANS tone."
   },
   "CFR": {
     "meaning": "Confirmation to receive",
@@ -17,7 +37,7 @@ t30 = {
   },
   "CNG": {
     "meaning": "Calling tone",
-    "details": "to indicate a calling non-speech terminal. A cyclic 1100 Hz tone, ON for 0.5 second, OFF for 3 seconds, to indicate to multifunction answering devices, or humans, that a fax sender is calling."
+    "details": "to indicate a calling non-speech terminal. A cyclic 1100 Hz tone, ON for 0.5 second,\nOFF for 3 seconds, to indicate to multifunction answering devices, or humans,\nthat a fax sender is calling."
   },
   "CSI": {
     "meaning": "Called subscriber identification",
