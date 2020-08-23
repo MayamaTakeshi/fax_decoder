@@ -50,8 +50,10 @@ data = json.loads(s)
 for item in data:
     item['expanded'] = False
     if item['aggregation'] == "0":
+        item['col'] = 0
         item['bColor'] = '#4cd3c2'
     else:
+        item['col'] = 1
         item['bColor'] = '#d1eaa3'
 
     if item['type'] == 'MESSAGE':
