@@ -48,10 +48,20 @@ data = json.loads(s)
 
 for item in data:
     item['expanded'] = False
-    if item['col'] == "0":
+    if item['aggregation'] == "0":
         item['bColor'] = '#4cd3c2'
     else:
         item['bColor'] = '#d1eaa3'
+
+    if item['type'] == 'MESSAGE':
+        msg = item['event']
+        info = t30[msg] if t30.has_key(msg) else {'meaning': '', 'details': ''}
+
+        item['event'] = item['event'] + " (" + info['meaning'] + ")"
+        item['body'] = "MESSAGE " + event + " (" + info['meaning'] + "): " + info['details'] + "\n\nParse:\n" + details.replace("%0a", "\n") + "\n\nRaw Bytes:" + item['bytes']
+        delete item['bytes']
+        delete item['details']
+
 
 lines = open('fax_comm_decoding.html.template').readlines()
 template = ''.join(lines)

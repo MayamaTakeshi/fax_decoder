@@ -22,26 +22,16 @@ def convert(filename):
     f = open(filename)
     for line in f.readlines():
         tokens = line.split(";") 
-        time = tokens[0]
-        item_type = tokens[1]
-        col = tokens[2]
-        subject = tokens[3]
 
         item = {
-            'time': time,
-            'col': col,
-            'type': item_type,
-            'subject': subject,
-            'body': 'NO DETAILS',
+            'time': tokens[0],
+            'type': tokens[1],
+            'aggregation': tokens[2],
+            'event': tokens[3],
+            'bytes': tokens[4],
+            'details': tokens[5],
         }
 
-        if item_type == 'MESSAGE':
-            raw_bytes = tokens[4]
-            details = tokens[5]
-            info = t30[subject] if t30.has_key(subject) else {'meaning': '', 'details': ''}
-
-            item['subject'] = item['subject'] + " (" + info['meaning'] + ")"
-            item['body'] = "MESSAGE " + subject + " (" + info['meaning'] + "): " + info['details'] + "\n\nParse:\n" + details.replace("%0a", "\n") + "\n\nRaw Bytes:" + raw_bytes
         data.append(item)
 
     print json.dumps(data)
