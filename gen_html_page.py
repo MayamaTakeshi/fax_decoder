@@ -59,7 +59,7 @@ for item in data:
         info = t30[msg] if t30.has_key(msg) else {'meaning': '', 'details': ''}
 
         item['event'] = item['event'] + " (" + info['meaning'] + ")"
-        item['body'] = "MESSAGE " + msg + " (" + info['meaning'] + "): " + info['details'] + "\n\nParse:\n" + info['details'].replace("%0a", "\n") + "\n\nRaw Bytes:" + item['bytes']
+        item['body'] = "MESSAGE " + msg + " (" + info['meaning'] + "): " + info['details'] + "\n\nParse:\n" + item['details'].replace("%0a", "\n") + "\n\nRaw Bytes:" + item['bytes']
         del item['bytes']
         del item['details']
     elif item['type'] == 'TONE':
@@ -70,7 +70,10 @@ for item in data:
         item['body'] = "TONE " + msg + " (" + info['meaning'] + "): " "\n" + info['details'].replace("%0a", "\n")
         del item['bytes']
         del item['details']
- 
+    elif item['type'] == 'STATS':
+        item['body'] = "STATS: " "\n" + item['bytes'].replace("%0a", "\n") # actually the info should be in the item['details'] instead of item['bytes']
+        del item['bytes']
+        del item['details']
 
 lines = open('fax_comm_decoding.html.template').readlines()
 template = ''.join(lines)
