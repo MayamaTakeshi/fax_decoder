@@ -21,7 +21,9 @@ def convert(filename):
     data = []
     f = open(filename)
     for line in f.readlines():
-        tokens = line.split(";") 
+        tokens = line.split(";",5)
+	if len(tokens) < 6:
+		tokens = tokens + ['' for i in range(6 - len(tokens))]
 
         item = {
             'time': tokens[0],
