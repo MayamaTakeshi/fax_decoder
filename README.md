@@ -7,6 +7,7 @@ To use it, you will need to build and install spandsp fax_decoder:
 sudo apt install build-essential make automake autoconf
 sudo apt install libtiff-dev
 sudo apt install libaudiofile-dev
+sudo apt install libsndfile1-dev
 
 git clone https://github.com/MayamaTakeshi/spandsp
 cd spandsp
