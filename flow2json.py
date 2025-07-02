@@ -22,9 +22,9 @@ def convert(filename):
     f = open(filename)
     for line in f.readlines():
         tokens = line.split(";",5)
-	if len(tokens) < 6:
-		tokens = tokens + ['' for i in range(6 - len(tokens))]
-
+        if len(tokens) < 6:
+            print(tokens)
+            tokens = tokens + ['' for i in range(6 - len(tokens))]
         item = {
             'time': tokens[0],
             'type': tokens[1],
@@ -36,7 +36,7 @@ def convert(filename):
 
         data.append(item)
 
-    print json.dumps(data)
+    print(json.dumps(data))
 
 
 
